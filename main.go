@@ -10,9 +10,9 @@ import (
 )
 
 func main() {
-  if len(os.Args) < 2 {
-    log.Fatal("missing module path")
-  }
+	if len(os.Args) < 2 {
+		log.Fatal("missing module path")
+	}
 
 	cmd := startServer()
 	defer killServer(cmd)
