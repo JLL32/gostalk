@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -11,11 +10,9 @@ import (
 )
 
 func main() {
-
-	// get all go source files recursively
-	// capture each file's stat in a map with the absolute path as the key
-	// iterate over the files and compare each stat with its older version in the map
-	// if they don't match rerun the command
+  if len(os.Args) < 2 {
+    log.Fatal("missing module path")
+  }
 
 	cmd := startServer()
 	defer killServer(cmd)
@@ -54,10 +51,7 @@ func main() {
 			})
 
 		if changed {
-			fmt.Println("killing the previous instance")
 			killServer(cmd)
-
-			fmt.Println("rerunning the server")
 			cmd = startServer()
 		}
 
@@ -79,7 +73,7 @@ func startServer() *exec.Cmd {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(cmd.Process.Pid)
+
 	return cmd
 }
 
