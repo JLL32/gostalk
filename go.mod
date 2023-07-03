@@ -1,3 +1,3 @@
-module github.com/jll32/stalker
+module github.com/jll32/gostalk
 
 go 1.20
