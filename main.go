@@ -11,7 +11,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		log.Fatal("missing module path")
+		log.Fatal("missing main package path")
 	}
 
 	cmd := startServer()
@@ -27,7 +27,7 @@ func main() {
 					return err
 				}
 
-				if filepath.Ext(path) != ".go" {
+        if extension := filepath.Ext(path); extension != ".go" && extension != ".mod" && extension != ".sum" {
 					return nil
 				}
 
