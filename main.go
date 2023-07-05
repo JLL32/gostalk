@@ -31,11 +31,7 @@ func main() {
 					return nil
 				}
 
-				actualStat, err := os.Stat(path)
-				if err != nil {
-					return err
-				}
-
+        actualStat := info
 				initialStat, ok := initialStats[path]
 				if !ok {
 					initialStats[path] = actualStat
